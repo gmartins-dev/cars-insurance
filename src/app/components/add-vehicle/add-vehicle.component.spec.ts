@@ -34,14 +34,14 @@ describe('AddVehicleComponent', () => {
   it('deve ser inválido se year for menor que 1900 ou maior que o ano atual', () => {
     const currentYear = new Date().getFullYear();
     component.vehicleForm.setValue({ make: 'A', model: 'B', year: 1800, vin: '12345678901234567', licensePlate: 'AAA-0000' });
-    expect(component.f['year'].errors?.['min']).toBeTrue();
+    expect(component.f['year'].errors?.['min']).toBeTruthy();
     component.vehicleForm.setValue({ make: 'A', model: 'B', year: currentYear + 1, vin: '12345678901234567', licensePlate: 'AAA-0000' });
-    expect(component.f['year'].errors?.['max']).toBeTrue();
+    expect(component.f['year'].errors?.['max']).toBeTruthy();
   });
 
   it('deve ser inválido se VIN não tiver 17 caracteres', () => {
     component.vehicleForm.setValue({ make: 'A', model: 'B', year: 2000, vin: '123', licensePlate: 'AAA-0000' });
-    expect(component.f['vin'].errors?.['pattern']).toBeTrue();
+    expect(component.f['vin'].errors?.['pattern']).toBeTruthy();
     component.vehicleForm.setValue({ make: 'A', model: 'B', year: 2000, vin: '12345678901234567', licensePlate: 'AAA-0000' });
     expect(component.f['vin'].errors).toBeNull();
   });

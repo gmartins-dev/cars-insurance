@@ -1,0 +1,48 @@
+<div class="min-h-screen flex flex-col items-center bg-white px-2 py-8 sm:py-12">
+  <div class="fixed top-0 left-0 w-full bg-[#5968FA] flex justify-center items-center py-6 z-10">
+    <img src="https://loovi.com.br/assets/images/svg/logo-loovi-seguros.svg" alt="Loovi Seguros" class="h-8" />
+  </div>
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-[0_0_24px_0_rgba(0,0,0,0.10)] p-4 sm:p-8 flex flex-col gap-6 mt-16">
+    <h2 class="text-center text-2xl font-semibold text-gray-800 mb-2">Adicionar Veículo</h2>
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-col gap-4">
+      <div class="flex flex-col gap-1">
+        <label class="text-sm text-gray-500 font-medium">Marca <span class="text-red-500">*</span></label>
+        <input type="text" formControlName="make" class="rounded-xl border border-gray-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 transition w-full" [ngClass]="{'border-red-500': submitted && f['make'].errors}" placeholder="Ex: Toyota" />
+        <div *ngIf="submitted && f['make'].errors" class="text-red-500 text-xs mt-1">Marca é obrigatória.</div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-sm text-gray-500 font-medium">Modelo <span class="text-red-500">*</span></label>
+        <input type="text" formControlName="model" class="rounded-xl border border-gray-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 transition w-full" [ngClass]="{'border-red-500': submitted && f['model'].errors}" placeholder="Ex: Corolla" />
+        <div *ngIf="submitted && f['model'].errors" class="text-red-500 text-xs mt-1">Modelo é obrigatório.</div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-sm text-gray-500 font-medium">Ano <span class="text-red-500">*</span></label>
+        <input type="number" formControlName="year" class="rounded-xl border border-gray-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 transition w-full" [ngClass]="{'border-red-500': submitted && f['year'].errors}" min="1900" [max]="currentYear" placeholder="Ex: 2022" />
+        <div *ngIf="submitted && f['year'].errors" class="text-red-500 text-xs mt-1">
+          <div *ngIf="f['year'].errors['required']">Ano é obrigatório.</div>
+          <div *ngIf="f['year'].errors['min'] || f['year'].errors['max']">Ano deve ser entre 1900 e {{ currentYear }}.</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-sm text-gray-500 font-medium">VIN (Chassi) <span class="text-red-500">*</span></label>
+        <input type="text" formControlName="vin" maxlength="17" class="rounded-xl border border-gray-200 px-4 py-3 text-base font-mono focus:outline-none focus:ring-2 focus:ring-primary-500 transition w-full" [ngClass]="{'border-red-500': submitted && f['vin'].errors}" placeholder="Ex: 1HGCM82633A004352" />
+        <div *ngIf="submitted && f['vin'].errors" class="text-red-500 text-xs mt-1">
+          <div *ngIf="f['vin'].errors['required']">VIN é obrigatório.</div>
+          <div *ngIf="f['vin'].errors['pattern']">VIN deve ter exatamente 17 caracteres.</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-sm text-gray-500 font-medium">Placa <span class="text-red-500">*</span></label>
+        <input type="text" formControlName="licensePlate" class="rounded-xl border border-gray-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 transition w-full" [ngClass]="{'border-red-500': submitted && f['licensePlate'].errors}" placeholder="Ex: ABC-1234" />
+        <div *ngIf="submitted && f['licensePlate'].errors" class="text-red-500 text-xs mt-1">Placa é obrigatória.</div>
+      </div>
+      <div class="flex flex-col gap-2 pt-2">
+        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-3 rounded-full transition flex items-center justify-center gap-2">
+          Salvar
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </button>
+        <button type="button" (click)="router.navigate(['/'])" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-base font-medium py-3 rounded-full transition">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

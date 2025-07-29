@@ -1,27 +1,53 @@
 # CarsInsurance
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
+Aplicação Angular para gerenciamento de veículos segurados.
 
-## Development server
+## Tecnologias Utilizadas
+- Angular 18
+- Tailwind CSS
+- TypeScript
+- Jasmine & Karma (testes unitários)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalação e Execução
 
-## Code scaffolding
+1. Instale as dependências:
+   ```
+   pnpm install
+   # ou
+   npm install
+   ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Rode o servidor de desenvolvimento:
+   ```
+   ng serve
+   ```
+   Acesse [http://localhost:4200](http://localhost:4200) no navegador.
 
-## Build
+## Estrutura de Pastas
+- `src/app/components/` — Componentes (VehicleList, AddVehicle)
+- `src/app/services/` — Serviços (VehicleService)
+- `src/app/models/` — Modelos/interfaces (Vehicle)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Funcionalidades
+- Listagem de veículos segurados
+- Adição de novos veículos com validação de formulário
+- Navegação entre lista e formulário
+- Estilização responsiva com Tailwind CSS
 
-## Running unit tests
+## Testes
+Execute os testes unitários com:
+```
+ng test
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Observações
+- Todos os campos do formulário são obrigatórios.
+- Ano deve ser entre 1900 e o ano atual.
+- VIN deve ter exatamente 17 caracteres.
 
-## Running end-to-end tests
+## Referências
+- [Angular Docs](https://angular.io/docs)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+Desafio técnico para Loovi. Dúvidas: lucas.muryllo@loovi.com.br

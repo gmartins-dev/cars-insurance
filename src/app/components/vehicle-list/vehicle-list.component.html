@@ -10,30 +10,33 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </button>
     </div>
-    <div *ngIf="vehicles.length === 0" class="text-gray-500 text-center py-8">
-      Nenhum veículo cadastrado.
-    </div>
-    <div *ngIf="vehicles.length > 0" class="overflow-x-auto rounded-xl border border-gray-100 bg-white">
-      <table class="min-w-full text-sm sm:text-base">
-        <thead>
-          <tr class="bg-gray-50 text-gray-500">
-            <th class="py-3 px-2 sm:px-4 text-left font-medium">Marca</th>
-            <th class="py-3 px-2 sm:px-4 text-left font-medium">Modelo</th>
-            <th class="py-3 px-2 sm:px-4 text-left font-medium">Ano</th>
-            <th class="py-3 px-2 sm:px-4 text-left font-medium">VIN</th>
-            <th class="py-3 px-2 sm:px-4 text-left font-medium">Placa</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let v of vehicles" class="border-b last:border-b-0 hover:bg-gray-50 transition">
-            <td class="py-3 px-2 sm:px-4">{{ v.make }}</td>
-            <td class="py-3 px-2 sm:px-4">{{ v.model }}</td>
-            <td class="py-3 px-2 sm:px-4">{{ v.year }}</td>
-            <td class="py-3 px-2 sm:px-4 font-mono">{{ v.vin }}</td>
-            <td class="py-3 px-2 sm:px-4">{{ v.licensePlate }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    <ng-container *ngIf="vehicles$ | async as vehicles">
+      <div *ngIf="vehicles.length === 0" class="text-gray-500 text-center py-8">
+        Nenhum veículo cadastrado.
+      </div>
+      <div *ngIf="vehicles.length > 0" class="overflow-x-auto rounded-xl border border-gray-100 bg-white">
+        <table class="min-w-full text-sm sm:text-base">
+          <thead>
+            <tr class="bg-gray-50 text-gray-500">
+              <th class="py-3 px-2 sm:px-4 text-left font-medium">Marca</th>
+              <th class="py-3 px-2 sm:px-4 text-left font-medium">Modelo</th>
+              <th class="py-3 px-2 sm:px-4 text-left font-medium">Ano</th>
+              <th class="py-3 px-2 sm:px-4 text-left font-medium">VIN</th>
+              <th class="py-3 px-2 sm:px-4 text-left font-medium">Placa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let v of vehicles" class="border-b last:border-b-0 hover:bg-gray-50 transition">
+              <td class="py-3 px-2 sm:px-4">{{ v.make }}</td>
+              <td class="py-3 px-2 sm:px-4">{{ v.model }}</td>
+              <td class="py-3 px-2 sm:px-4">{{ v.year }}</td>
+              <td class="py-3 px-2 sm:px-4 font-mono">{{ v.vin }}</td>
+              <td class="py-3 px-2 sm:px-4">{{ v.licensePlate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
   </div>
 </div>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { VehicleService } from '../../services/vehicle.service';
 import { Vehicle } from '../../models/vehicle.model';
 
@@ -11,13 +12,15 @@ import { Vehicle } from '../../models/vehicle.model';
   templateUrl: './vehicle-list.component.html',
   styleUrl: './vehicle-list.component.css'
 })
-export class VehicleListComponent {
-  vehicles: Vehicle[] = [];
-
-  constructor(private vehicleService: VehicleService, private router: Router) {}
+export class VehicleListComponent implements OnInit {
+  vehicles$: Observable<Vehicle[]>;
+  
+  constructor(private vehicleService: VehicleService, private router: Router) {
+    this.vehicles$ = this.vehicleService.getVehicles();
+  }
 
   ngOnInit() {
-    this.vehicles = this.vehicleService.getVehicles();
+    // Inicialização já feita no construtor
   }
 
   goToAddVehicle() {

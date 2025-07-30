@@ -26,4 +26,16 @@ export class VehicleListComponent implements OnInit {
   goToAddVehicle() {
     this.router.navigate(['/add-vehicle']);
   }
+
+  removeVehicle(vin: string): void {
+    if (confirm('Tem certeza que deseja remover este veículo?')) {
+      this.vehicleService.removeVehicle(vin);
+    }
+  }
+
+  clearVehicles(): void {
+    if (confirm('Tem certeza que deseja remover todos os veículos?')) {
+      this.vehicleService.clearVehicles();
+    }
+  }
 }

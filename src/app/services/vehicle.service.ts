@@ -42,4 +42,16 @@ export class VehicleService {
     this.vehiclesSubject.next([...currentVehicles, vehicle]);
     this.saveToStorage();
   }
+
+  removeVehicle(vin: string): void {
+    const currentVehicles = this.vehiclesSubject.value;
+    const updatedVehicles = currentVehicles.filter(v => v.vin !== vin);
+    this.vehiclesSubject.next(updatedVehicles);
+    this.saveToStorage();
+  }
+
+  clearVehicles(): void {
+    this.vehiclesSubject.next([]);
+    this.saveToStorage();
+  }
 }

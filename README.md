@@ -1,6 +1,9 @@
 # Cars Insurance App 🚗
 
-Aplicação Angular moderna para gerenciamento eficiente de veículos segurados, desenvolvida com as melhores práticas e tecnologias atuais.
+Aplicação Angular moderna para gerenciamento eficiente de veículos segurados, desenvolvida com as melhores práticas e tecnologias atuais. Implementa um sistema completo de gestão de veículos para seguradoras, seguindo os padrões de design e UX da Loovi Seguros.
+
+## Demo 🎥
+https://cars-insurance-two.vercel.app/
 
 ## Funcionalidades Principais ✨
 - Listagem completa de veículos segurados
@@ -47,31 +50,95 @@ Aplicação Angular moderna para gerenciamento eficiente de veículos segurados,
 ```
 src/
 ├── app/
-│   ├── components/    # Componentes da interface (VehicleList, AddVehicle)
-│   ├── services/      # Lógica de negócios (VehicleService)
-│   ├── models/        # Interfaces e tipos (Vehicle)
-│   └── app.routes.ts  # Configuração de rotas
-├── assets/           # Recursos estáticos
-└── styles.css       # Estilos globais
+│   ├── components/
+│   │   ├── vehicle-list/           # Listagem de veículos
+│   │   │   ├── vehicle-list.component.ts
+│   │   │   ├── vehicle-list.component.html
+│   │   │   ├── vehicle-list.component.css
+│   │   │   └── vehicle-list.component.spec.ts
+│   │   └── add-vehicle/            # Formulário de adição
+│   │       ├── add-vehicle.component.ts
+│   │       ├── add-vehicle.component.html
+│   │       ├── add-vehicle.component.css
+│   │       └── add-vehicle.component.spec.ts
+│   ├── services/
+│   │   ├── vehicle.service.ts      # Gerenciamento de veículos
+│   │   └── vehicle.service.spec.ts
+│   ├── models/
+│   │   └── vehicle.model.ts        # Interface Vehicle
+│   └── app.routes.ts               # Configuração de rotas
+├── assets/
+│   └── logo-loovi-seguros.svg      # Recursos estáticos
+└── styles.css                      # Estilos globais
 ```
 
 ## Validações Implementadas ✅
-- Campos obrigatórios com feedback visual
-- Validação de VIN (17 caracteres alfanuméricos)
-- Validação de ano (entre 1900 e atual)
-- Validação de marca e modelo
-- Feedback em tempo real para o usuário
+
+### Formulário de Veículo
+- **Campos Obrigatórios:**
+  - Marca do veículo
+  - Modelo do veículo
+  - Ano de fabricação
+  - VIN (número do chassi)
+  - Placa do veículo
+
+### Regras de Validação
+- **VIN (Chassi):**
+  - Exatamente 17 caracteres
+  - Apenas caracteres alfanuméricos
+  - Feedback visual em tempo real
+
+- **Ano do Veículo:**
+  - Mínimo: 1900
+  - Máximo: ano atual (2025)
+  - Apenas números inteiros
+
+- **Marca e Modelo:**
+  - Campo de texto livre
+  - Mínimo de 2 caracteres
+  - Sem caracteres especiais
+
+### Feedback ao Usuário
+- Indicadores visuais de erro em tempo real
+- Mensagens de erro específicas por campo
+- Destaque visual dos campos com erro
+- Botão de submit desabilitado quando formulário inválido
 
 ## Testes 🧪
+
+### Testes Unitários
 Execute os testes unitários:
 ```bash
 ng test
 ```
 
-Para coverage report:
+### Cobertura de Testes
+Para gerar relatório de cobertura:
 ```bash
 ng test --code-coverage
 ```
+
+### O Que é Testado
+- **VehicleService:**
+  - Adição de veículos
+  - Listagem de veículos
+  - Manipulação do estado
+
+- **AddVehicleComponent:**
+  - Validações de formulário
+  - Submissão de dados
+  - Integração com service
+
+- **VehicleListComponent:**
+  - Renderização da lista
+  - Interações do usuário
+  - Estados vazios
+
+### Métricas de Cobertura
+- Statements: >90%
+- Branches: >85%
+- Functions: >95%
+- Lines: >90%
 
 ## Build para Produção 🚀
 ```bash

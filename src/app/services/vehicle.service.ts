@@ -39,8 +39,11 @@ export class VehicleService {
 
   addVehicle(vehicle: Vehicle): void {
     const currentVehicles = this.vehiclesSubject.value;
-    this.vehiclesSubject.next([...currentVehicles, vehicle]);
-    this.saveToStorage();
+    const existingVehicle = currentVehicles.find(v => v.vin === vehicle.vin);
+    if (!existingVehicle) {
+      this.vehiclesSubject.next([...currentVehicles, vehicle]);
+      this.saveToStorage();
+    }
   }
 
   removeVehicle(vin: string): void {

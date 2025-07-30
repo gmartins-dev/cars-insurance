@@ -8,17 +8,34 @@ https://cars-insurance-two.vercel.app/
 ## Funcionalidades Principais ✨
 - Listagem completa de veículos segurados
 - Adição de novos veículos com validação avançada
+- Remoção individual de veículos
+- Limpeza completa da lista
 - Interface responsiva e intuitiva
 - Validação em tempo real dos dados
 - Sistema de feedback visual para o usuário
 - Navegação fluida entre componentes
+- Persistência de dados com localStorage
+- Design system alinhado com a identidade Loovi Seguros
 
 ## Tecnologias Utilizadas 🛠️
 - Angular 18 (Framework principal)
+  - Signals para gerenciamento de estado
+  - Componentes standalone
+  - Lazy loading
 - TypeScript 5.x (Tipagem estática)
-- Tailwind CSS (Estilização moderna)
+  - Strict mode habilitado
+  - Interfaces bem definidas
+- Tailwind CSS 3.x (Estilização moderna)
+  - Design system customizado
+  - Responsividade nativa
+  - JIT compilation
 - Jasmine & Karma (Testes unitários)
+  - Cobertura abrangente
+  - Testes assíncronos
 - PNPM (Gerenciador de pacotes otimizado)
+  - Cache eficiente
+  - Instalação rápida
+  - Melhor uso de disco
 
 ## Pré-requisitos 📋
 - Node.js (>= 18.x)
@@ -121,29 +138,85 @@ ng test --code-coverage
 ### O Que é Testado
 - **VehicleService:**
   - Adição de veículos
+  - Remoção de veículos
+  - Limpeza da lista
   - Listagem de veículos
   - Manipulação do estado
+  - Persistência localStorage
+  - Carregamento inicial do estado
 
 - **AddVehicleComponent:**
   - Validações de formulário
   - Submissão de dados
   - Integração com service
+  - Feedback de sucesso/erro
+  - Redirecionamento pós-adição
 
 - **VehicleListComponent:**
   - Renderização da lista
   - Interações do usuário
   - Estados vazios
+  - Confirmação de remoção
+  - Responsividade da tabela
+  - Filtragem dinâmica dos botões
 
-### Métricas de Cobertura
-- Statements: >90%
-- Branches: >85%
-- Functions: >95%
-- Lines: >90%
+### Boas Práticas de Teste
+- Testes unitários isolados
+- Mocks de serviços externos
+- Testes de edge cases
+- Testes de casos de erro
+- Testes de componentes standalone
+- Testes de integração entre componentes
+- Testes de rotas e navegação
 
-## Build para Produção 🚀
+## Design System e Identidade Visual 🎨
+
+### Cores Principais
+- **Azul Loovi:** `#5968FA` (Header)
+- **Verde Bandeira:** `#049B62` (Botões de ação primária)
+- **Verde Hover:** `#25D366` (Hover em botões primários)
+- **Vermelho Base:** `#B91C1C` (Botões de ação destrutiva)
+- **Vermelho Hover:** `#DC2626` (Hover em botões destrutivos)
+
+## Armazenamento e Persistência 💾
+- Utilização do localStorage para persistência
+- Chave de armazenamento: `'vehicles'`
+- Formato: Array de objetos Vehicle
+- Carregamento automático ao iniciar
+- Sincronização em tempo real
+
+## Acessibilidade ♿
+- Contraste adequado de cores
+- Elementos interativos claramente identificáveis
+- Feedback visual e textual
+- Navegação por teclado
+- HTML semântico
+- Labels e ARIA attributes
+- Responsividade em todos os breakpoints
+
+## Convenções de Código �
+- Prettier para formatação
+- ESLint para linting
+- Commits semânticos
+- Nomenclatura em camelCase
+- Tipagem estrita TypeScript
+- Componentes standalone
+- Signals para estado (Angular 18)
+- RxJS para streams de dados
+
+## Build para Produção �🚀
 ```bash
 ng build --configuration production
 ```
+
+Os arquivos de build serão gerados no diretório `dist/`.
+
+### Otimizações de Produção
+- Tree shaking
+- Minificação de código
+- Compressão de assets
+- Cache busting
+- Lazy loading de rotas
 
 ## Referências e Documentação 📚
 - [Documentação Angular](https://angular.io/docs)
